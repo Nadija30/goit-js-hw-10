@@ -14,6 +14,10 @@
     display: flex;
     justify-content: center;
 }
+.error {
+display: flex;
+justify-content: center;
+}
 .breed-select {
     display: none;
     max-width: 400px;
