@@ -18,16 +18,16 @@ divCatInfo.classList.add('is-hidden');
 //selector.addEventListener('change', onSelectBreedCat);
 
 
-//fetchBreeds().then(console.log) 
-let arrBreedsId = [];
+
 fetchBreeds()
 .then(data => {
-    data.forEach(element => {
-        arrBreedsId.push({text: element.name, value: element.id});
-    });
+   const arrBreedsId = data.map(element => (`<option value = "${element.id}" >${element.name}</option>`)).join('');
+    selector.insertAdjacentHTML('beforeend', arrBreedsId)
     new SlimSelect({
         select: selector,
-        data: arrBreedsId
+        settings: {
+            placeholderText: 'Click on me',
+        }
     });
     selector.addEventListener('change', onSelectBreedCat);
 }).catch(onFetchError);
