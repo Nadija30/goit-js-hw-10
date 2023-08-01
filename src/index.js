@@ -15,7 +15,7 @@ loader.classList.replace('loader', 'is-hidden');
 error.classList.add('is-hidden');
 divCatInfo.classList.add('is-hidden');
 
-selector.addEventListener('change', onSelectBreedCat);
+//selector.addEventListener('change', onSelectBreedCat);
 
 
 //fetchBreeds().then(console.log) 
@@ -29,6 +29,7 @@ fetchBreeds()
         select: selector,
         data: arrBreedsId
     });
+    selector.addEventListener('change', onSelectBreedCat);
 }).catch(onFetchError);
 //console.log(arrBreedsId)
 
@@ -42,7 +43,7 @@ function onSelectBreedCat(evt) {
     fetchCatByBreed(breedId)
     
         .then(data => {
-         loader.classList.replace('loader', 'is-hidden');
+        loader.classList.replace('loader', 'is-hidden');
         selector.classList.remove('is-hidden');
         const { url, breeds } = data[0];
         const catInfo = `<div class="box-img">
@@ -54,8 +55,8 @@ function onSelectBreedCat(evt) {
         <p><b>Temperament:</b> ${breeds[0].temperament}
         </p>
         </div>`
-        divCatInfo.classList.remove('is-hidden');
         divCatInfo.innerHTML = catInfo;
+        divCatInfo.classList.remove('is-hidden');
         
     })
     .catch(onFetchError);
